@@ -60,14 +60,14 @@ if (!isMatch) {
 }
 
 
-    // ✅ TOKEN
+    // TOKEN
     const token = jwt.sign(
       { id: user._id },
       "secretkey",
       { expiresIn: "1h" }
     );
 
-    res.json({ token }); // 👈 MUST
+    res.json({ token });
 
   } catch (err) {
     res.status(500).json({ msg: "Server error" });

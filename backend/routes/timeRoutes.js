@@ -5,9 +5,7 @@ import TimeLog from "../models/TimeLog.js";
 import auth from "../middleware/auth.js";
 
 
-// =====================
-// ⏱️ START TIMER
-// =====================
+//  START TIMER
 router.post("/start", auth, async (req, res) => {
   try {
     const log = new TimeLog({
@@ -25,10 +23,7 @@ router.post("/start", auth, async (req, res) => {
   }
 });
 
-
-// =====================
-// ⏹️ STOP TIMER
-// =====================
+// STOP TIMER
 router.post("/stop/:id", auth, async (req, res) => {
   try {
     const log = await TimeLog.findOne({
@@ -71,10 +66,7 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-
-// =====================
-// 📄 GET ALL LOGS (USER ONLY)
-// =====================
+// GET ALL LOGS (USER ONLY)
 router.get("/", auth, async (req, res) => {
   try {
     const logs = await TimeLog.find({
@@ -88,10 +80,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-
-// =====================
-// 💰 GET UNBILLED LOGS
-// =====================
+// GET UNBILLED LOGS
 router.get("/unbilled", auth, async (req, res) => {
   try {
     const logs = await TimeLog.find({
@@ -111,10 +100,7 @@ router.get("/unbilled", auth, async (req, res) => {
   }
 });
 
-
-// =====================
-// ✅ MARK AS BILLED
-// =====================
+// MARK AS BILLED
 router.put("/mark-billed", auth, async (req, res) => {
   try {
     const { ids } = req.body;

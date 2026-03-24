@@ -5,7 +5,7 @@ import Project from "../models/Project.js";
 import auth from "../middleware/auth.js";
 
 
-// 🔵 GET ALL PROJECTS (Only logged-in user)
+// GET ALL PROJECTS (Only logged-in user)
 router.get("/", auth, async (req, res) => {
   try {
     const projects = await Project.find({
@@ -19,7 +19,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 
-// 🟢 ADD PROJECT
+// ADD PROJECT
 router.post("/", auth, async (req, res) => {
   try {
     const newProject = new Project({
@@ -39,7 +39,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 
-// 🟡 UPDATE PROJECT
+// UPDATE PROJECT
 router.put("/:id", auth, async (req, res) => {
   try {
 
@@ -64,7 +64,7 @@ router.put("/:id", auth, async (req, res) => {
 });
 
 
-// 🔴 DELETE PROJECT
+// DELETE PROJECT
 router.delete("/:id", auth, async (req, res) => {
   try {
 

@@ -7,20 +7,25 @@ import auth from "../middleware/auth.js";
 
 // GET TASKS
 router.get("/", auth, async (req, res) => {
+  try {
+    const tasks = await Task.find({
+      userId: req.user.id
+    });
 
-  const tasks = await Task.find({
-    userId: req.user.id
-  }).populate("projectId");
+    res.json(tasks);
 
-  res.json(tasks);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err.message });
+  }
 });
+
 
 // ADD TASK
 router.post("/", auth, async (req, res) => {
 
   const newTask = new Task({
     title: req.body.title,
-    projectId: req.body.projectId,
     dueDate: req.body.dueDate,
     userId: req.user.id
   });

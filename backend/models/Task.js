@@ -5,11 +5,18 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   dueDate: {
     type: Date,
     required: true,
   },
-}, { timestamps: true });
+
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  }
+
+}/* , { timestamps: true } */);
 
 const Task = mongoose.model("Task", taskSchema);
 
